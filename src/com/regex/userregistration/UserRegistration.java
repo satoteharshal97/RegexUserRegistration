@@ -14,7 +14,7 @@ public class UserRegistration {
         boolean check = true;
         while (check) {
             System.out.println("Select:\n" + "1.Check First Name\n" + "2.Check Last Name\n"
-                    + "3.Check EmailId\n" + "4.Exit\n");
+                    + "3.Check EmailId\n" + "4.Check Mobile Format\n"+ "5.Exit\n");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -30,11 +30,24 @@ public class UserRegistration {
                     regex.checkEmailId(scanner.nextLine());
                     break;
                 case 4:
+                    System.out.println("Enter mobile number with country code:");
+                    regex.checkMobileNumber(scanner.nextLine());
+                    break;
+                case 5:
                     check = false;
                     break;
                 default:
                     System.out.println("Compile Again!");
             }
+        }
+    }
+
+    private void checkMobileNumber(String mobileNumber) {
+        boolean value = Pattern.matches("^(91)\\s?[6-9][0-9]{9}$", mobileNumber);
+        if (value) {
+            System.out.println("Valid Number : " + mobileNumber);
+        } else {
+            System.out.println("Invalid Number: " + mobileNumber);
         }
     }
 
