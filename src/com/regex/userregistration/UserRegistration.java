@@ -49,7 +49,7 @@ public class UserRegistration {
     }
 
     private void checkPassword(String password) {
-        boolean value = Pattern.matches("^[0-9_A-Z]{8,}$", password);
+        boolean value = Pattern.matches("^(?=.*[A-Z])[\\w]{8,}$", password);
         String checkCondition = value?"Valid Password : " + password:"Invalid Password: " + password;
         System.out.println(checkCondition);
     }
