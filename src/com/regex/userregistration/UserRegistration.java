@@ -9,12 +9,14 @@ public class UserRegistration {
     private final static UserRegistration regex = new UserRegistration();
 
     public static void main(String[] args) {
+
         System.out.println("Welcome to Java Regex");
         System.out.println("Choose an appropriate option: ");
         boolean check = true;
         while (check) {
             System.out.println("Select:\n" + "1.Check First Name\n" + "2.Check Last Name\n"
-                    + "3.Check EmailId\n" + "4.Check Mobile Format\n"+ "5.Exit\n");
+                    + "3.Check EmailID\n" + "4.Check Mobile Format\n" + "5.Check Password\n"
+                    + "6.Exit\n");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -34,6 +36,10 @@ public class UserRegistration {
                     regex.checkMobileNumber(scanner.nextLine());
                     break;
                 case 5:
+                    System.out.println("Enter password:");
+                    regex.checkPassword(scanner.nextLine());
+                    break;
+                case 6:
                     check = false;
                     break;
                 default:
@@ -41,6 +47,13 @@ public class UserRegistration {
             }
         }
     }
+
+    private void checkPassword(String password) {
+        boolean value = Pattern.matches("[0-9]{8,}", password);
+        String checkCondition = value?"Valid Password : " + password:"Invalid Password: " + password;
+        System.out.println(checkCondition);
+    }
+
 
     private void checkMobileNumber(String mobileNumber) {
         boolean value = Pattern.matches("^(91)\\s?[6-9][0-9]{9}$", mobileNumber);
@@ -52,7 +65,7 @@ public class UserRegistration {
     }
 
     private void checkEmailId(String email) {
-        boolean variable = Pattern.matches("^[a-z]+[._+]?[a-z_0-9]*[@][a-z_0-9]+[.][a-z]{2,4}[.]?[a-z]*$",email.toLowerCase());
+        boolean variable = Pattern.matches("^[a-z]+[._+]?[a-z_0-9]*[@][a-z_0-9]+[.][a-z]{2,4}[.]?[a-z]*$", email.toLowerCase());
         if (variable) {
             System.out.println("Valid email -->" + email);
         } else {
