@@ -35,7 +35,7 @@ public class UserRegistration {
     }
 
     private void checkName(String name) {
-        boolean value = Pattern.matches("[A-Z]{1}[a-zA-Z]{3,}", name);
+        boolean value = Pattern.matches("^[A-Z]{1}[a-zA-Z]{3,}$", name);
         if (value) {
             System.out.println("Valid Name : " + name);
         } else {
